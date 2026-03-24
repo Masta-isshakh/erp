@@ -1,24 +1,46 @@
-## AWS Amplify React+Vite Starter Template
+## ERP Lite (Amplify Only)
 
-This repository provides a starter template for creating applications using React+Vite and AWS Amplify, emphasizing easy setup for authentication, API, and database capabilities.
+This project is now a minimal Amplify-only React app with exactly two pages:
 
-## Overview
+- `Inventory`
+- `Supplier`
 
-This template equips you with a foundational React application integrated with AWS Amplify, streamlined for scalability and performance. It is ideal for developers looking to jumpstart their project with pre-configured AWS services like Cognito, AppSync, and DynamoDB.
+There is no custom backend folder or custom API server. Data is stored directly through Amplify Data models.
 
-## Features
+## Data Models
 
-- **Authentication**: Setup with Amazon Cognito for secure user authentication.
-- **API**: Ready-to-use GraphQL endpoint with AWS AppSync.
-- **Database**: Real-time database powered by Amazon DynamoDB.
+Defined in `amplify/data/resource.ts`:
+
+- `Inventory`
+	- `sku`, `name`, `quantity`, `unit`, `location`, `unitCost`, `isActive`
+- `Supplier`
+	- `name`, `phone`, `email`, `address`, `notes`, `isActive`
+
+Both models use authenticated access.
+
+## App Structure
+
+- `src/App.tsx`: two-page UI (Inventory + Supplier) with create/list/delete
+- `src/App.css`: styles for the two-page UI
+- `src/main.tsx`: Amplify configuration + app bootstrap
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
 
 ## Deploying to AWS
 
-For detailed instructions on deploying your application, refer to the [deployment section](https://docs.amplify.aws/react/start/quickstart/#deploy-a-fullstack-app-to-aws) of our documentation.
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+Use standard Amplify deployment workflow:
+https://docs.amplify.aws/react/start/quickstart/#deploy-a-fullstack-app-to-aws
 
 ## License
 
